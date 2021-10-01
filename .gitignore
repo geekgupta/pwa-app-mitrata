@@ -1,0 +1,20 @@
+**/media/**/*.xlsx
+**/media/**/*.wav
+**/media/**/*.mp3
+**/media/**/*.flac
+db.sqlite3
+**/env/
+.vscode/
+**/migrations/
+**/Visit/
+**/__pycache__/
+**/*.log
+**/*.flac
+**/*.json
+# **/*.xlsx
+# **/*.csv
+**/*.zip
+**/node_modules/
+**/static/reports/*.xlsx
+pwa/pwa-asset-generator
+/node_modules
