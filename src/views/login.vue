@@ -204,7 +204,7 @@ export default {
           // this.$emit("id", this.id);
           console.log(id);
           this.$store.commit("SET_ID", id);
-          this.$router.replace({ name: "secure" });
+          this.$router.replace({ name: "dashboard" });
         } else {
           alert("Unable to log in with provided credentials.");
         }

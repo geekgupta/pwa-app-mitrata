@@ -13,6 +13,8 @@
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
 <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
 
+
+<link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
@@ -23,7 +25,40 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    function isStandalone () {
+      return !!navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+  }
+  
+  // Depends on bowser but wouldn't be hard to use a
+  // different approach to identifying that we're running on Android
+  function exitsOnBack () {
+      return isStandalone() && browserInfo.os.name === 'Android';
+  }
+  
+  // Everything below has to run at page start, probably onLoad
+  
+  if (exitsOnBack()) handleBackEvents();
+  
+  function handleBackEvents() {
+      window.history.pushState({}, '');
+  
+      window.addEventListener('popstate', () => {
+          //TODO: Optionally show a "Press back again to exit" tooltip
+          setTimeout(() => {
+              window.history.pushState({}, '');
+              //TODO: Optionally hide tooltip
+          }, 2000);
+      });
+  }
+  </script>
   <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </html>
